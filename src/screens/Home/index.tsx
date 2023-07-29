@@ -3,24 +3,28 @@ import { styles } from './styles'
 import { Participant } from '../../components/Participant'
 import { existingParticipantAlert } from '../../components/ExistingParticipantAlert'
 import { removeParticipantAlert } from '../../components/RemoveParticipantAlert'
+import { useState } from 'react'
 
 export function Home() {
-  const participants: Array<string> = [
-    'Luis Fernando',
-    'Maria Clara',
-    'Gabriela',
-  ]
+  const [participants, setParticipants] = useState<Array<string>>([])
+  const [participantName, setParticipantName] = useState('')
 
   function handleParcipantAdd() {
     if (participants.includes('Luis Fernando')) {
       existingParticipantAlert()
     }
+
+    setParticipants((prevState) => [...prevState, participantName])
+    setParticipantName('')
   }
 
   function handleParticipantRemove(name: string) {
     removeParticipantAlert({
       name,
-      onRemove: () => console.log('Participante removido'),
+      onRemove: () =>
+        setParticipants((prevState) =>
+          prevState.filter((participant) => participant !== name),
+        ),
     })
   }
 
@@ -35,6 +39,8 @@ export function Home() {
           style={styles.input}
           placeholder="Nome do Participante"
           placeholderTextColor="#6b6b6b"
+          value={participantName}
+          onChangeText={setParticipantName}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleParcipantAdd}>
