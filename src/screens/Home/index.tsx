@@ -1,17 +1,19 @@
-import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { styles } from './styles'
-import { Participant } from '../../components/Participant'
-import { existingParticipantAlert } from '../../components/ExistingParticipantAlert'
-import { removeParticipantAlert } from '../../components/RemoveParticipantAlert'
 import { useState } from 'react'
+import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {
+  Participant,
+  existingParticipantAlert,
+  removeParticipantAlert,
+} from '../../components'
+import { styles } from './styles'
 
 export function Home() {
   const [participants, setParticipants] = useState<Array<string>>([])
   const [participantName, setParticipantName] = useState('')
 
   function handleParcipantAdd() {
-    if (participants.includes('Luis Fernando')) {
-      existingParticipantAlert()
+    if (participants.includes(participantName)) {
+      return existingParticipantAlert()
     }
 
     setParticipants((prevState) => [...prevState, participantName])
