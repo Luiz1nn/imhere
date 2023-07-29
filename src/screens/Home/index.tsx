@@ -1,6 +1,14 @@
-import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {
+  Alert,
+  FlatList,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import { styles } from './styles'
 import { Participant } from '../../components/Participant'
+import { existingParticipantAlert } from '../../components/ExistingParticipantAlert'
 
 export function Home() {
   const participants: Array<string> = [
@@ -9,7 +17,11 @@ export function Home() {
     'Gabriela',
   ]
 
-  function handleParcipantAdd() {}
+  function handleParcipantAdd() {
+    if (participants.includes('Luis Fernando')) {
+      existingParticipantAlert()
+    }
+  }
 
   function handleParticipantRemove(name: string) {}
 
