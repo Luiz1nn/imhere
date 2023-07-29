@@ -1,5 +1,5 @@
-import { StatusBar } from 'react-native';
-import { Home } from './src/screens/Home';
+import { StatusBar } from 'react-native'
+import { Home } from './src/screens/Home'
 
 const App = () => {
   return (
@@ -11,8 +11,7 @@ const App = () => {
       />
       <Home />
     </>
-  );
+  )
 }
-
 
 export default App
