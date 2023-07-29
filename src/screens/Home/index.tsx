@@ -4,7 +4,7 @@ import {
   Participant,
   existingParticipantAlert,
   removeParticipantAlert,
-} from '../../components'
+} from '@/components'
 import { styles } from './styles'
 
 export function Home() {
