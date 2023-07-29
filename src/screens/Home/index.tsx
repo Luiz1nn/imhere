@@ -1,14 +1,8 @@
-import {
-  Alert,
-  FlatList,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { styles } from './styles'
 import { Participant } from '../../components/Participant'
 import { existingParticipantAlert } from '../../components/ExistingParticipantAlert'
+import { removeParticipantAlert } from '../../components/RemoveParticipantAlert'
 
 export function Home() {
   const participants: Array<string> = [
@@ -23,7 +17,12 @@ export function Home() {
     }
   }
 
-  function handleParticipantRemove(name: string) {}
+  function handleParticipantRemove(name: string) {
+    removeParticipantAlert({
+      name,
+      onRemove: () => console.log('Participante removido'),
+    })
+  }
 
   return (
     <View style={styles.container}>
